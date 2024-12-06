@@ -14,7 +14,7 @@ class AppColor {
   static const Color blackText = Color(0xff2E2E2E);
   static const Color blueText = Color(0xff2C96F1);
 
-  static const Color topPrimaryBG = Color(0xff111111);
+  static const Color primaryBG = Color(0xff111111);
   static const Color secondaryBG = Color(0xff1E1E1E);
 
   static const Color cardBG = Color(0xff252836);

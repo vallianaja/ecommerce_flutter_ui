@@ -16,7 +16,7 @@ class SuccessPage extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: AppColor.topPrimaryBG,
+              color: AppColor.primaryBG,
               borderRadius: BorderRadius.circular(16),
             ),
             child: Column(

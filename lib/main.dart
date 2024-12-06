@@ -1,3 +1,5 @@
+import 'package:ecommerce_skl_project/data/datasource/auth_remote_datasource.dart';
+import 'package:ecommerce_skl_project/features/auth/bloc/login/login_bloc.dart';
 import 'package:ecommerce_skl_project/features/favorite/pages/index/page.dart';
 import 'package:ecommerce_skl_project/features/home/pages/index/page.dart';
 import 'package:ecommerce_skl_project/features/message/pages/index/page.dart';
@@ -6,6 +8,7 @@ import 'package:ecommerce_skl_project/features/splash/pages/index/splashScreen.d
 import 'package:ecommerce_skl_project/features/cart/pages/index/page.dart';
 import 'package:ecommerce_skl_project/features/cart/pages/checkout/page.dart';
 import 'success/success_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'preferences/preferences.dart';
 import 'package:flutter/material.dart';
@@ -20,14 +23,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return BlocProvider(
+      create: (context) => LoginBloc(AuthRemoteDatasource()),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const SplashScreen(),
       ),
-      home: const SplashScreen(),
     );
   }
 }
@@ -40,8 +46,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-
   int selectedIndex = 0;
+
   IconButton buildItemNav(IconData icon, int index) {
     return IconButton(
       onPressed: () {
@@ -49,7 +55,12 @@ class _MainPageState extends State<MainPage> {
           selectedIndex = index;
         });
       },
-      icon: Icon(icon, color: selectedIndex == index ? AppColor.primaryColor : AppColor.secondaryColor,),
+      icon: Icon(
+        icon,
+        color: selectedIndex == index
+            ? AppColor.primaryColor
+            : AppColor.secondaryColor,
+      ),
     );
   }
 
@@ -63,11 +74,12 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.topPrimaryBG,
-      body: pages[selectedIndex],
+        backgroundColor: AppColor.primaryBG,
+        body: pages[selectedIndex],
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const CartPage()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const CartPage()));
           },
           backgroundColor: AppColor.thirdColor,
           shape: const CircleBorder(),
@@ -86,7 +98,9 @@ class _MainPageState extends State<MainPage> {
               children: [
                 buildItemNav(CustomIcon.home, 0),
                 buildItemNav(CustomIcon.message, 1),
-                const SizedBox(width: 40,),
+                const SizedBox(
+                  width: 40,
+                ),
                 buildItemNav(CustomIcon.favorite, 2),
                 buildItemNav(CustomIcon.profile, 3),
               ],

@@ -62,7 +62,7 @@ class MessagePage extends StatelessWidget {
 
   AppBar header() {
     return AppBar(
-        backgroundColor: AppColor.topPrimaryBG,
+        backgroundColor: AppColor.primaryBG,
         title: const Text(
           'Message Support',
           style: TextStyle(

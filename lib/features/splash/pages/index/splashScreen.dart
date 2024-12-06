@@ -1,3 +1,4 @@
+import 'package:ecommerce_skl_project/features/auth/pages/login_page.dart';
 import 'package:ecommerce_skl_project/preferences/colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -25,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.topPrimaryBG,
+      backgroundColor: AppColor.primaryBG,
       body: Center(
         child: Image.asset(
           'assets/images/splash.png',

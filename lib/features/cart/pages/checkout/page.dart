@@ -21,7 +21,7 @@ class CheckoutPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColor.secondaryBG,
       appBar: AppBar(
-          backgroundColor: AppColor.topPrimaryBG,
+          backgroundColor: AppColor.primaryBG,
           title: const Text(
             'Checkout Details',
             style: TextStyle(

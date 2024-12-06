@@ -62,7 +62,7 @@ class FavoritePage extends StatelessWidget {
 
   AppBar header() {
     return AppBar(
-        backgroundColor: AppColor.topPrimaryBG,
+        backgroundColor: AppColor.primaryBG,
         title: const Text(
           'Favorite Shoes',
           style: TextStyle(
